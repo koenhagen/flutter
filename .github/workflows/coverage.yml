@@ -25,5 +25,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: pushd packages/flutter;../../bin/flutter test --coverage -j 1;popd
-          count: 1
 
