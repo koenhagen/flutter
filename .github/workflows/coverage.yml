@@ -19,5 +19,5 @@ jobs:
         uses: koenhagen/measure-energy-action@v0.20
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: ../../bin/flutter test --coverage -j 1
+          run: ./bin/flutter test --coverage -j 1
 
