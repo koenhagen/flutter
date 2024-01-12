@@ -19,4 +19,4 @@ jobs:
         uses: koenhagen/measure-energy-action@v0.20
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: pushd packages/flutter;../../bin/flutter test --coverage -j 1;popd
+          run: flutter test --coverage -j 1
