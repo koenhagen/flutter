@@ -20,10 +20,6 @@ jobs:
           flutter-version: '3.13.8'
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
 
-      - name: create fake env
-        shell: bash
-        run: .github/scripts/create_fake_env.sh
-
       # Get flutter dependencies.
       - run: flutter pub get
 
