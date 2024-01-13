@@ -18,7 +18,9 @@ jobs:
         with:
           channel: 'stable' # 'dev', 'alpha', default to: 'stable'
           flutter-version: '3.13.8'
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+
+      # Checkout the branch
+      - uses: actions/checkout@v1
 
       # Get flutter dependencies.
       - run: flutter pub get
