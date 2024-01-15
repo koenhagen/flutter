@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
-      - name: ./bin/flutter test --coverage
+      - name: ./bin/flutter ./packages/flutter/test --coverage
         uses: koenhagen/measure-energy-action@v0.20
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
