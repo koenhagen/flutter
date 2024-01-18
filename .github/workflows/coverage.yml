@@ -26,10 +26,10 @@ jobs:
       - run: cd packages/flutter;../../bin/flutter pub get
 
       # Run the build runner for the generated code.
-      - run: ../../bin/flutter pub run build_runner build --delete-conflicting-outputs
+      - run: cd packages/flutter;../../bin/flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: ./bin/flutter test --coverage
         uses: koenhagen/measure-energy-action@v0.20
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: ../../bin/flutter test --coverage -j 1;cd ../../
+          run: cd packages/flutter;../../bin/flutter test --coverage -j 1;cd ../../
