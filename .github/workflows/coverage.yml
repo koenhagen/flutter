@@ -23,13 +23,13 @@ jobs:
       - uses: actions/checkout@v1
 
       # Get flutter dependencies.
-      - run: flutter pub get
+      - run: cd packages/flutter;../../bin/flutter pub get
 
       # Run the build runner for the generated code.
-      - run: flutter pub run build_runner build --delete-conflicting-outputs
+      - run: ../../bin/flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: ./bin/flutter test --coverage
         uses: koenhagen/measure-energy-action@v0.20
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: cd packages/flutter;../../bin/flutter test --coverage -j 1;cd ../../
+          run: ../../bin/flutter test --coverage -j 1;cd ../../
