@@ -6,24 +6,28 @@ name: coverage
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - 'packages/flutter/**'
 
-permissions: read-all
+permissions: write-all
 
 jobs:
   build:
     name: coverage
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'flutter/flutter' }}
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
-      - name: ./bin/flutter test --coverage
-        run: pushd packages/flutter;../../bin/flutter test --coverage -j 1;popd
-      - name: upload coverage
-        uses: codecov/codecov-action@eaaf4bedf32dbdc6b720b63067d99c4d77d6047d
+      - uses: subosito/flutter-action@v1
         with:
-          files: packages/flutter/coverage/lcov.info
-          verbose: true
+          channel: 'stable' # 'dev', 'alpha', default to: 'stable'
+          flutter-version: '3.13.8'
+
+      # Checkout the branch
+      - uses: actions/checkout@v1
+
+      # Get flutter dependencies.
+      - run: cd packages/flutter;../../bin/flutter pub get
+
+      - name: ./bin/flutter test --coverage
+        uses: koenhagen/measure-energy-action@v0.27
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: cd packages/flutter;../../bin/flutter test --coverage -j 1;cd ../../
+          count: 3
