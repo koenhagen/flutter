@@ -26,7 +26,7 @@ jobs:
       - run: cd packages/flutter;../../bin/flutter pub get
 
       - name: ./bin/flutter test --coverage
-        uses: koenhagen/measure-energy-action@v0.20
+        uses: koenhagen/measure-energy-action@v0.24
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: cd packages/flutter;../../bin/flutter test --coverage -j 1;cd ../../
